@@ -2,6 +2,8 @@ FROM node:8.12-alpine
 
 COPY . /app
 
+RUN chown -R 1001710000:1001710000 /app
+
 WORKDIR /app
 
 RUN apk upgrade --update \
@@ -13,11 +15,13 @@ RUN apk upgrade --update \
         /app/.git \
         /app/screenshots \
         /app/test
-        
+
 RUN chown -R 1001710000:1001710000 /app
 
 EXPOSE 1337
 
 VOLUME /app/kongadata
+
+USER 1001710000
 
 ENTRYPOINT ["/app/start.sh"]
