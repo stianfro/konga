@@ -13,6 +13,8 @@ RUN apk upgrade --update \
         /app/.git \
         /app/screenshots \
         /app/test
+        
+RUN chown -R 1001710000:1001710000 /app
 
 EXPOSE 1337
 
